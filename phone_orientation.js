@@ -22,6 +22,10 @@ function requestOrientationPermission() {
   }
 }
 
+function requestPermission() {
+  requestOrientationPermission();
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+}
 
 function handleOrientation(event) {
   alpha = event.alpha;
