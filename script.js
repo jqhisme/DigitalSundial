@@ -21,9 +21,10 @@ function setup() {
     });
   }
 
-  let btn = createButton("Permission");
-  btn.position(width/2 - 80, height - 40 );
-  btn.mousePressed(requestPermission);
+  permissionBtn = createButton("Give Permission");
+  permissionBtn.id("permissionBtn");
+  permissionBtn.position(width/2 - 80, height - 40 );
+  permissionBtn.mousePressed(requestPermission);
 
 }
 
@@ -40,7 +41,7 @@ function draw() {
 
   if(latitude && longitude){
     console.log(alpha)
-    console.log("location retreived")
+    //console.log("location retreived")
     now = new Date();
     pos = SunCalc.getPosition(now, latitude, longitude);
     let altitude = pos.altitude * (180 / Math.PI); // convert to degrees
@@ -56,7 +57,6 @@ function draw() {
     rotate(shadowDirection);
 
     let radius = 50;
-    let baseY_length = 30
     noFill();
     circle(0, 0, radius*2); 
     strokeWeight(1);
@@ -67,8 +67,8 @@ function draw() {
       let xEnd = -radius + i/24*radius*2;
 
       let coef = i>12 ? 12-(i-12) : i;
-      let expcoef = pow(coef,1.5);
-      let yEnd = baseY_length+yStart +shadowLength * expcoef/12;
+      let expcoef = pow(coef,1.5)+0.3;
+      let yEnd = yStart +shadowLength * expcoef/12;
 
       line(xStart, yStart, xEnd, yEnd);
     }

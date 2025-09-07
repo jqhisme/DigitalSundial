@@ -24,7 +24,12 @@ function requestOrientationPermission() {
 
 function requestPermission() {
   requestOrientationPermission();
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+  navigator.geolocation.getCurrentPosition(updateLocation, console.error, {
+    enableHighAccuracy: true
+  });
+  if (typeof permissionBtn !== 'undefined' && permissionBtn) {
+    permissionBtn.remove();
+  }
 }
 
 function handleOrientation(event) {
