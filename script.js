@@ -21,9 +21,9 @@ function setup() {
     });
   }
 
-  let btn = createButton("Enable Device Orientation");
+  let btn = createButton("Permission");
   btn.position(width/2 - 80, height - 40 );
-  btn.mousePressed(requestOrientationPermission);
+  btn.mousePressed(requestPermission);
 
 }
 
