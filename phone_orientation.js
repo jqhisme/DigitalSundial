@@ -24,9 +24,25 @@ function requestOrientationPermission() {
 
 function requestPermission() {
   requestOrientationPermission();
-  navigator.geolocation.getCurrentPosition(updateLocation, console.error, {
-    enableHighAccuracy: true
-  });
+  
+  // Request geolocation permission properly
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      updateLocation, 
+      (error) => {
+        console.error("Geolocation error:", error);
+        // Don't remove button if geolocation fails, let user try again
+      }, 
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 60000
+      }
+    );
+  } else {
+    console.error("Geolocation not supported");
+  }
+  
   if (typeof permissionBtn !== 'undefined' && permissionBtn) {
     permissionBtn.remove();
   }
