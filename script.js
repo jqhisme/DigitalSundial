@@ -15,11 +15,11 @@ function setup() {
   angleMode(DEGREES);
 
   // get geolocation and watch changes
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(updateLocation, console.error, {
-      enableHighAccuracy: true
-    });
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.watchPosition(updateLocation, console.error, {
+  //     enableHighAccuracy: true
+  //   });
+  // }
 
   permissionBtn = createButton("Give Permission");
   permissionBtn.id("permissionBtn");
