@@ -49,7 +49,7 @@ function draw() {
 
     // calculate shadow length
     let shadowLength = poleHeight / tan(altitude);
-    let shadowDirection = (azimuth + 180 - alpha + 360) % 360; //shadow points opposite to the sun
+    let shadowDirection = (azimuth + 180 + alpha + 360) % 360; //shadow points opposite to the sun
 
     // drawing
     push();
